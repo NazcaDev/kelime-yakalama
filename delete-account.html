@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hesap Silme Talebi</title>
+    <title>Talep Alındı</title>
     <style>
-        /* ----------------- RESET & GENEL ----------------- */
         * {
             margin: 0;
             padding: 0;
@@ -24,368 +23,57 @@
 
         .container {
             background: #ffffff;
-            max-width: 620px;
+            max-width: 520px;
             width: 100%;
-            padding: 40px 35px;
+            padding: 50px 35px;
             border-radius: 24px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.10);
-            transition: all 0.3s ease;
-        }
-
-        .container:hover {
-            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.15);
-        }
-
-        .logo-area {
             text-align: center;
-            margin-bottom: 28px;
         }
 
-        .logo-area .icon {
-            font-size: 48px;
+        .icon {
+            font-size: 72px;
             display: block;
+            margin-bottom: 16px;
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #1a2b4c;
+            margin-bottom: 12px;
+        }
+
+        p {
+            color: #5e6f8d;
+            font-size: 16px;
+            line-height: 1.7;
             margin-bottom: 8px;
         }
 
-        .logo-area h1 {
-            font-size: 26px;
-            font-weight: 700;
-            color: #1a2b4c;
-            letter-spacing: -0.3px;
-        }
-
-        .logo-area p {
-            color: #5e6f8d;
-            font-size: 15px;
-            margin-top: 6px;
-        }
-
-        .divider {
-            height: 2px;
-            background: linear-gradient(to right, #e2e8f0, #b0c4de, #e2e8f0);
-            margin: 20px 0 26px 0;
-            border: 0;
-        }
-
-        .info-box {
-            background: #f8faff;
-            border-left: 4px solid #3b7cff;
-            padding: 16px 18px;
-            border-radius: 10px;
-            margin-bottom: 28px;
-            font-size: 14px;
-            color: #1e2f4a;
-            line-height: 1.6;
-        }
-
-        .info-box strong {
-            color: #0b1e3a;
-        }
-
-        .info-box ul {
-            margin: 10px 0 0 20px;
-        }
-
-        .info-box ul li {
-            margin-bottom: 4px;
-        }
-
-        /* ----------------- FORM ----------------- */
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            font-weight: 600;
-            font-size: 14px;
-            color: #1a2b4c;
-            margin-bottom: 6px;
-        }
-
-        .form-group label .required {
-            color: #e53e3e;
-            margin-left: 2px;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 14px 16px;
-            font-size: 15px;
-            border: 1.5px solid #dce3ef;
-            border-radius: 12px;
-            background: #fafcff;
-            transition: border-color 0.25s, box-shadow 0.25s;
-            font-family: inherit;
-            color: #0b1e3a;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #3b7cff;
-            box-shadow: 0 0 0 4px rgba(59, 124, 255, 0.12);
-            background: #ffffff;
-        }
-
-        .form-group textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        .form-group .helper {
-            font-size: 13px;
-            color: #6d7d9e;
-            margin-top: 5px;
-        }
-
-        /* ----------------- BUTON ----------------- */
-        .btn-submit {
-            width: 100%;
-            padding: 16px;
+        .button {
+            display: inline-block;
+            margin-top: 24px;
+            padding: 14px 36px;
             background: #1a2b4c;
             color: #ffffff;
-            font-size: 17px;
-            font-weight: 600;
-            border: none;
-            border-radius: 14px;
-            cursor: pointer;
-            transition: background 0.25s, transform 0.15s, box-shadow 0.25s;
-            letter-spacing: 0.3px;
-            margin-top: 6px;
-        }
-
-        .btn-submit:hover {
-            background: #0f1e38;
-            box-shadow: 0 8px 24px rgba(26, 43, 76, 0.25);
-        }
-
-        .btn-submit:active {
-            transform: scale(0.98);
-        }
-
-        .btn-submit:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-
-        /* ----------------- STATUS MESAJLARI ----------------- */
-        .status-message {
-            margin-top: 20px;
-            padding: 14px 18px;
-            border-radius: 12px;
-            font-size: 15px;
-            display: none;
-            font-weight: 500;
-        }
-
-        .status-message.success {
-            display: block;
-            background: #e6f7ee;
-            color: #0f6e3f;
-            border: 1px solid #b8e0cc;
-        }
-
-        .status-message.error {
-            display: block;
-            background: #fde8e8;
-            color: #b13a3a;
-            border: 1px solid #f5cdcd;
-        }
-
-        .status-message.loading {
-            display: block;
-            background: #eef2f9;
-            color: #1a2b4c;
-            border: 1px solid #cbd5e1;
-        }
-
-        /* ----------------- FOOTER ----------------- */
-        .footer-note {
-            text-align: center;
-            margin-top: 28px;
-            font-size: 13px;
-            color: #7a8aa8;
-            border-top: 1px solid #eef3fa;
-            padding-top: 22px;
-        }
-
-        .footer-note a {
-            color: #1a2b4c;
             text-decoration: none;
-            font-weight: 500;
+            border-radius: 14px;
+            font-weight: 600;
+            transition: background 0.25s;
         }
 
-        .footer-note a:hover {
-            text-decoration: underline;
-        }
-
-        /* ----------------- RESPONSIVE ----------------- */
-        @media (max-width: 480px) {
-            .container {
-                padding: 28px 18px;
-            }
-
-            .logo-area h1 {
-                font-size: 22px;
-            }
-
-            .form-group input,
-            .form-group textarea {
-                font-size: 14px;
-                padding: 12px 14px;
-            }
-
-            .btn-submit {
-                font-size: 15px;
-                padding: 14px;
-            }
+        .button:hover {
+            background: #0f1e38;
         }
     </style>
 </head>
 <body>
-
     <div class="container">
-
-        <!-- LOGO & BAŞLIK -->
-        <div class="logo-area">
-            <span class="icon">🗑️</span>
-            <h1>Hesap Silme Talebi</h1>
-            <p>Uygulamanızdaki hesabınızı silmek için formu doldurun.</p>
-        </div>
-
-        <hr class="divider" />
-
-        <!-- BİLGİ KUTUSU -->
-        <div class="info-box">
-            <strong>📌 Hesap silme süreci hakkında</strong>
-            <ul>
-                <li>Talebiniz <strong>30 iş günü</strong> içinde işleme alınır.</li>
-                <li>Hesap silindiğinde tüm kişisel verileriniz <strong>kalıcı olarak</strong> silinir.</li>
-                <li>Yasal zorunluluklar nedeniyle bazı işlem kayıtları <strong>5 yıl</strong> saklanabilir.</li>
-                <li>Silme işlemi tamamlandığında e-posta ile bilgilendirileceksiniz.</li>
-            </ul>
-        </div>
-
-        <!-- FORM -->
-        <form id="deleteForm">
-            <!-- E-posta -->
-            <div class="form-group">
-                <label for="email">E-posta Adresiniz <span class="required">*</span></label>
-                <input type="email" id="email" name="email" placeholder="ornek@mail.com" required />
-                <div class="helper">Hesabınızın kayıtlı olduğu e-posta adresini girin.</div>
-            </div>
-
-            <!-- Kullanıcı Adı / ID -->
-            <div class="form-group">
-                <label for="username">Kullanıcı Adı veya Hesap ID <span class="required">*</span></label>
-                <input type="text" id="username" name="username" placeholder="kullanici_adi veya ID" required />
-                <div class="helper">Hesabınızı tanımlamak için kullanıcı adınızı veya ID'nizi yazın.</div>
-            </div>
-
-            <!-- Silme Nedeni -->
-            <div class="form-group">
-                <label for="reason">Silme Nedeni (isteğe bağlı)</label>
-                <textarea id="reason" name="reason" placeholder="Hesabınızı silmek istemenizin sebebini kısaca belirtebilirsiniz..."></textarea>
-            </div>
-
-            <!-- GÖNDER BUTONU -->
-            <button type="submit" class="btn-submit" id="submitBtn">📤 Talebi Gönder</button>
-
-            <!-- DURUM MESAJI -->
-            <div id="statusMessage" class="status-message"></div>
-        </form>
-
-        <!-- FOOTER -->
-        <div class="footer-note">
-            <a href="#" onclick="event.preventDefault();">Gizlilik Politikası</a> &bull;
-            <a href="#" onclick="event.preventDefault();">Destek</a>
-        </div>
+        <span class="icon">✅</span>
+        <h1>Teşekkürler!</h1>
+        <p>Hesap silme talebiniz başarıyla iletilmiştir.</p>
+        <p>En kısa sürede tarafınıza dönüş yapılacaktır.</p>
+        <a href="delete-account.html" class="button">← Ana Sayfaya Dön</a>
     </div>
-
-    <!-- ----------------- JAVASCRIPT ----------------- -->
-    <script>
-        (function() {
-
-            const form = document.getElementById('deleteForm');
-            const statusMsg = document.getElementById('statusMessage');
-            const submitBtn = document.getElementById('submitBtn');
-
-            // ⚠️ BURAYA FORMPREE URL'NİZİ YAZIN!
-            // Formspree.io'dan aldığınız endpoint URL'si
-            const FORMSPREE_URL = 'https://formspree.io/f/meebqnbz'; // <-- DEĞİŞTİR!
-
-            function showMessage(message, type) {
-                statusMsg.textContent = message;
-                statusMsg.className = 'status-message ' + type;
-            }
-
-            function hideMessage() {
-                statusMsg.className = 'status-message';
-                statusMsg.textContent = '';
-            }
-
-            form.addEventListener('submit', async function(e) {
-                e.preventDefault();
-                hideMessage();
-
-                const email = document.getElementById('email').value.trim();
-                const username = document.getElementById('username').value.trim();
-                const reason = document.getElementById('reason').value.trim();
-
-                // Validasyon
-                if (!email || !username) {
-                    showMessage('❌ Lütfen e-posta ve kullanıcı adı alanlarını doldurun.', 'error');
-                    return;
-                }
-
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(email)) {
-                    showMessage('❌ Lütfen geçerli bir e-posta adresi girin.', 'error');
-                    return;
-                }
-
-                // Butonu kilitle
-                submitBtn.disabled = true;
-                submitBtn.textContent = '⏳ Gönderiliyor...';
-                showMessage('⏳ Talebiniz iletilmeye çalışılıyor...', 'loading');
-
-                // FormData oluştur
-                const formData = new FormData();
-                formData.append('email', email);
-                formData.append('username', username);
-                formData.append('reason', reason);
-                formData.append('_subject', '🔔 Yeni Hesap Silme Talebi');
-
-                try {
-                    const response = await fetch(FORMSPREE_URL, {
-                        method: 'POST',
-                        body: formData,
-                        headers: {
-                            'Accept': 'application/json'
-                        }
-                    });
-
-                    if (response.ok) {
-                        showMessage('✅ Talebiniz başarıyla iletildi! En kısa sürede size dönüş yapılacaktır.', 'success');
-                        form.reset();
-                    } else {
-                        const errorText = await response.text();
-                        console.error('Formspree hatası:', errorText);
-                        showMessage('❌ Gönderim sırasında bir sorun oluştu. Lütfen daha sonra tekrar deneyin.', 'error');
-                    }
-                } catch (error) {
-                    console.error('Ağ hatası:', error);
-                    showMessage('❌ Bağlantı hatası. Lütfen internet bağlantınızı kontrol edin.', 'error');
-                } finally {
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = '📤 Talebi Gönder';
-                }
-            });
-
-        })();
-    </script>
-
 </body>
 </html>
